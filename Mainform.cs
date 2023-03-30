@@ -1,4 +1,5 @@
 ﻿using DailyFileLogger;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,10 @@ namespace LoggerForWinform
             }
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+
+        #region [logging by Multi-threads]
+        
+        private async void btnMTSTest_Click(object sender, EventArgs e)
         {
             var logger = _loggerProvider.CreateLogger("MTS_TEST");
 
@@ -69,5 +73,16 @@ namespace LoggerForWinform
                 System.Threading.Thread.Sleep(rand.Next(100));
             }
         }
+
+
+
+        #endregion
+
+        #region [ILoggingBuilder Use Test]
+
+        // need to study how to implement ILoggingBuilder in .NET Framework
+        // ...
+
+        #endregion
     }
 }
